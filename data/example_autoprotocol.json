@@ -1,0 +1,54 @@
+{
+    "refs": {
+      "dye": {
+        "id": "ct13zjq79whe",
+        "store": { "where": "ambient" }
+      },
+      "water": {
+        "id": "ct149x8mea3j",
+        "store": { "where": "ambient" }
+      },
+      "samples": {
+        "id": "ct3b245kx34l",
+        "discard": true
+      }
+    },
+
+    "instructions": [
+        { "op": "pipette",
+          "groups": [
+            { "distribute": {
+              "from": "water/0",
+              "to": [
+                { "well": "test/A1",
+                  "volume": "40:microliter" },
+                { "well": "test/A2",
+                  "volume": "40:microliter" },
+                { "well": "test/A3",
+                  "volume": "40:microliter" }
+              ]
+            } }, { "distribute": {
+              "from": "dye/0",
+              "to": [
+                { "well": "test/A1",
+                  "volume": "5:microliter" },
+                { "well": "test/A2",
+                  "volume": "5:microliter" },
+                { "well": "test/A3",
+                  "volume": "5:microliter" },
+              ]
+            } }
+          ]
+        }, {
+          "op": "spin",
+          "object": "test",
+          "duration": "30:second",
+          "acceleration": "2000:g"
+        }, {
+          "op": "absorbance",
+          "object": "test",
+          "wells": ["A1", "A2", "A3"],
+          "wavelength": "600:nanometer"
+        }]
+
+  }
